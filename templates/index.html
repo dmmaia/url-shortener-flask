@@ -8,10 +8,17 @@
 <body>
     <div class="content">
         <div class="title"><h1>Minimoom</h1></div>
-        <input class="url-input" type="text">
-        <div class="shortener-buttons">
-            <input type="button" value="Shorten" />
-        </div>
+        <form method="POST">
+            <div class="urls">
+                <input class="to-copy {{'hidden' if urlShortenned=="" }}" value="{{urlShortenned}}" disabled type="text">
+                <input class="url-input" name="urlInput" type="text">
+            </div>
+            <div class="shortener-buttons">
+                
+                    <input type="submit" value="Shorten" />
+                
+            </div>
+        </form>
     </div>
 </body>
 <style>
@@ -32,6 +39,22 @@
         padding-top: 5px;
         padding-bottom: 5px;
         border-radius: 10px;
+        background-color: lightgray;
+    }
+    .to-copy{
+        width: 20vw;
+        padding-bottom: 5px;
+        font-size: 16px;
+        border-radius: 5px;
+        color: white;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 5px;
+    }
+    .urls{
+        display: flex;
+        flex-direction: column;
+        align-items: end;
     }
     .shortener-buttons input{
         background-color: rgb(0, 0, 73);
@@ -54,6 +77,10 @@
         display: flex;
         justify-content: center;
         margin-bottom: 20px;
+        font-size: 25px;
+    }
+    .hidden{
+        display: none;
     }
 </style>
 </html>
