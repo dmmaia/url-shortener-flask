@@ -1,8 +1,18 @@
 import random
 from flask import Flask, render_template, request
 import requests
+from flask_sqlalchemy import SQLAlchemy
+from dotenv import load_dotenv
+import os
+load_dotenv()
+
+db = SQLAlchemy()
 
 app = Flask(__name__)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://' + os.getenv("DB_USER") + ':' + os.getenv("DB_PASSWORD") + '@' + os.getenv("DB_HOST") +'/'+ os.getenv("DB_NAME")
+
+db.init_app(app)
 
 @app.route('/', methods=["GET", "POST"])
 def index():
